@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import io.ermdev.classify.R;
 
+/**
+ * Created by erafaelmanuel on 11/26/2017.
+ */
 public class MainActivity extends AppCompatActivity implements MainScreen {
 
     MainPresenter presenter;
