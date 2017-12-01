@@ -13,30 +13,19 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    private final Application mApplication;
+    private final Application application;
 
     public AppModule(Application app) {
-        this.mApplication = app;
+        this.application = app;
     }
 
     @Provides
     Context provideContext() {
-        return mApplication;
+        return application;
     }
 
     @Provides
     Application provideApplication() {
-        return mApplication;
+        return application;
     }
-
-    @Provides
-    String provideDatabaseName() {
-        return "classify.db";
-    }
-
-    @Provides
-    Integer provideDatabaseVersion() {
-        return 1;
-    }
-
 }

@@ -1,11 +1,16 @@
-package io.ermdev.classify.persistence;
+package io.ermdev.classify.data.quiz;
+
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by erafaelmanuel on 11/28/2017.
  */
 
+@Entity(tableName = "tblquiz")
 public class Quiz {
 
+    @PrimaryKey
     private Long id;
     private String title;
     private String date;
