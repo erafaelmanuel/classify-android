@@ -1,4 +1,4 @@
-package io.ermdev.classify.data.quiz;
+package io.ermdev.classify.data.local.quiz;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;

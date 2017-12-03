@@ -1,4 +1,4 @@
-package io.ermdev.classify.data.quiz;
+package io.ermdev.classify.data.local.quiz;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -22,4 +22,7 @@ public interface QuizDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void save(Quiz quiz);
+
+    @Query("DELETE FROM tblquiz WHERE id=:id")
+    void deleteById(Long id);
 }

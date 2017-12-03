@@ -1,4 +1,4 @@
-package io.ermdev.classify.data.quiz;
+package io.ermdev.classify.data.local.quiz;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
