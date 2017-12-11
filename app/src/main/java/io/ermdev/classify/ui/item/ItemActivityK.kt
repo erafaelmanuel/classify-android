@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
  * Created by erafaelmanuel on 11/26/2017.
  */
 
-class ItemActivity : AppCompatActivity() {
+class ItemActivityK : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);

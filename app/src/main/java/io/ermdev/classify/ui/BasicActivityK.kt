@@ -13,7 +13,7 @@ import io.ermdev.classify.di.module.DatabaseModule
  * Created by erafaelmanuel on 11/28/2017.
  */
 
-class BasicActivity : AppCompatActivity() {
+class BasicActivityK : AppCompatActivity() {
 
     var appComponent:AppComponent? = null
     var databaseComponent:DatabaseComponent? = null

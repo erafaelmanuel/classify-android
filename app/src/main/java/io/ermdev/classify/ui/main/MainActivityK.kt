@@ -8,12 +8,12 @@ import io.ermdev.classify.R;
 /**
  * Created by erafaelmanuel on 11/26/2017.
  */
-class MainActivity : AppCompatActivity(), MainScreen {
+class MainActivityK : AppCompatActivity(), MainScreen {
 
     var presenter: MainPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_k);
     }
 }
