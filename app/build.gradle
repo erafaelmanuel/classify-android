@@ -6,8 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-def supportVersion='27.0.1'
-def daggerVersion=2.10
+def supportVersion = '27.0.1'
+def daggerVersion = 2.10
 def archVersion = '1.0.3'
 
 android {
@@ -30,13 +30,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     /**
      * Architecture
      */
+    implementation 'com.android.support:design:27.0.2'
     compile "android.arch.lifecycle:runtime:$archVersion"
     compile "android.arch.lifecycle:extensions:1.0.0"
     annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
