@@ -8,7 +8,7 @@ import io.ermdev.classify.R;
 /**
  * Created by erafaelmanuel on 11/26/2017.
  */
-class MainActivityK : AppCompatActivity(), MainScreen {
+class MainActivityK : AppCompatActivity() {
 
     var presenter: MainPresenter? = null
 

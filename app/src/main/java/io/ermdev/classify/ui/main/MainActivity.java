@@ -4,6 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -19,9 +21,13 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import io.ermdev.classify.R;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import io.ermdev.classify.R;
+import io.ermdev.classify.data.local.schedule.Schedule;
+import io.ermdev.classify.ui.BasicActivity;
+
+public class MainActivity extends BasicActivity implements MainScreen {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -57,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -78,6 +83,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void loadSchedules(List<Schedule> schedules) {
+        ScheduleTabAdapter scheduleAdapter = new ScheduleTabAdapter(getApplicationContext(), schedules);
+        scheduleRecyclerView.setAdapter(scheduleAdapter);
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        scheduleRecyclerView.setLayoutManager(layoutManager);
+        scheduleRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        scheduleRecyclerView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     /**
