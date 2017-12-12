@@ -1,6 +1,5 @@
 package io.ermdev.classify.ui.main;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import io.ermdev.classify.R;
 import io.ermdev.classify.data.local.schedule.Schedule;
 
 /**
@@ -29,17 +29,18 @@ public class ScheduleTabAdapter extends RecyclerView.Adapter<ScheduleTabAdapter.
 
     @Override
     public ScheduleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View cardView = mLayoutInflater.inflate(R.layout.adapter_main_schedule, parent, false);
+        return new ScheduleViewHolder(cardView);
     }
 
     @Override
     public void onBindViewHolder(ScheduleViewHolder holder, int position) {
-
+        holder.setView(position);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return schedules.size();
     }
 
     class ScheduleViewHolder extends RecyclerView.ViewHolder {
@@ -48,7 +49,7 @@ public class ScheduleTabAdapter extends RecyclerView.Adapter<ScheduleTabAdapter.
             super(itemView);
         }
 
-        public void setView() {
+        public void setView(final int position) {
 
         }
     }

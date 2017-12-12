@@ -4,11 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import io.ermdev.classify.R;
@@ -20,23 +25,52 @@ import io.ermdev.classify.data.local.schedule.Schedule;
 
 public class ScheduleTab extends Fragment {
 
+    private static final String TAG = ScheduleTab.class.getSimpleName();
+    private List<Schedule> schedules = new ArrayList<>();
+    private RecyclerView mRecyclerView;
+    private ScheduleTabAdapter scheduleAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        Log.i(TAG,"onCreateView " + schedules.size());
+        schedules.addAll(Arrays.asList(new Schedule(), new Schedule()));
         View rootView = inflater.inflate(R.layout.fragment_main_schedule, container, false);
-        RecyclerView mRecyclerView = rootView.findViewById(R.id.schedule_view);
-        scheduleRecyclerView = (RecyclerView)
-                customView.findViewById(R.id.shedule_recyclerview);
-        scheduleAdapter = new ScheduleAdapter(getContext(), scheduleList);
-        scheduleRecyclerView.setAdapter(scheduleAdapter);
-        LinearLayoutManager layoutManager =
-                new LinearLayoutManager(getContext());
+        mRecyclerView = rootView.findViewById(R.id.schedule_view);
+        scheduleAdapter = new ScheduleTabAdapter(getContext(), schedules);
+        mRecyclerView.setAdapter(scheduleAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        scheduleRecyclerView.setLayoutManager(layoutManager);
-        scheduleRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        scheduleRecyclerView.setVisibility(View.VISIBLE);
-        progressBar.setVisibility(View.INVISIBLE);
+
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         return rootView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG,"onPause " + schedules.size() + " " + scheduleAdapter);
+        schedules.clear();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(TAG,"onResume " + schedules.size());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i(TAG,"onStart " + schedules.size());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG,"onDestroy " + schedules.size());
     }
 }
