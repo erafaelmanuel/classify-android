@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,10 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import io.ermdev.classify.R;
-import io.ermdev.classify.data.local.schedule.Schedule;
+import io.ermdev.classify.data.local.schedule.ScheduleDto;
 import io.ermdev.classify.ui.BasicActivity;
 
 public class MainActivity extends BasicActivity implements MainScreen {
@@ -37,6 +38,12 @@ public class MainActivity extends BasicActivity implements MainScreen {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        ScheduleTab fragment = new ScheduleTab();
+        mSectionsPagerAdapter.setFragments(new Fragment[]{fragment,
+                PlaceholderFragment.newInstance(1), PlaceholderFragment.newInstance(2)});
+
+        MainPresenter mPresenter = new MainPresenter(this);
+        mPresenter.loadSchedules();
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -55,7 +62,6 @@ public class MainActivity extends BasicActivity implements MainScreen {
                         .setAction("Action", null).show();
             }
         });
-
     }
 
     @Override
@@ -76,13 +82,17 @@ public class MainActivity extends BasicActivity implements MainScreen {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void loadSchedules(List<Schedule> schedules) {
+    public void showSchedules(ArrayList<ScheduleDto> schedules) {
+        Fragment fragment = mSectionsPagerAdapter.getItem(0);
+        Bundle args = new Bundle();
+        args.putParcelableArrayList("schedules", schedules);
+        fragment.setArguments(args);
 
+        Log.i("ScheduleTab", "showSchedules");
     }
 
     /**
@@ -122,18 +132,28 @@ public class MainActivity extends BasicActivity implements MainScreen {
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        Fragment fragments[] = new Fragment[3];
+
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
+        public Fragment[] getFragments() {
+            return fragments;
+        }
+
+        public void setFragments(Fragment[] fragments) {
+            this.fragments = fragments;
+        }
+
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new ScheduleTab();
-                default:
-                    return PlaceholderFragment.newInstance(position + 1);
-            }
+            if(position < 0) {
+                return fragments[0];
+            } else if(position > 2) {
+                return fragments[2];
+            } else
+                return fragments[position];
         }
 
         @Override

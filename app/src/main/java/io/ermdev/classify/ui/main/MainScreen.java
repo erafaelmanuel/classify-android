@@ -1,8 +1,8 @@
 package io.ermdev.classify.ui.main;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import io.ermdev.classify.data.local.schedule.Schedule;
+import io.ermdev.classify.data.local.schedule.ScheduleDto;
 
 /**
  * Created by erafaelmanuel on 11/26/2017.
@@ -10,6 +10,6 @@ import io.ermdev.classify.data.local.schedule.Schedule;
 
 public interface MainScreen {
 
-    void loadSchedules(List<Schedule> schedules);
+    void showSchedules(ArrayList<ScheduleDto> schedules);
 
 }

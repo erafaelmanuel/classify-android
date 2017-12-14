@@ -13,11 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import io.ermdev.classify.R;
-import io.ermdev.classify.data.local.schedule.Schedule;
+import io.ermdev.classify.data.local.schedule.ScheduleDto;
 
 /**
  * Created by erafaelmanuel on 12/11/2017.
@@ -26,7 +24,7 @@ import io.ermdev.classify.data.local.schedule.Schedule;
 public class ScheduleTab extends Fragment {
 
     private static final String TAG = ScheduleTab.class.getSimpleName();
-    private List<Schedule> schedules = new ArrayList<>();
+    private ArrayList<ScheduleDto> schedules = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private ScheduleTabAdapter scheduleAdapter;
 
@@ -35,15 +33,20 @@ public class ScheduleTab extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView " + schedules.size());
-        schedules.addAll(Arrays.asList(new Schedule(), new Schedule()));
         View rootView = inflater.inflate(R.layout.fragment_main_schedule, container, false);
-        mRecyclerView = rootView.findViewById(R.id.schedule_view);
-        scheduleAdapter = new ScheduleTabAdapter(getContext(), schedules);
-        mRecyclerView.setAdapter(scheduleAdapter);
 
+        if(getArguments() != null) {
+            schedules = getArguments().getParcelableArrayList("schedules");
+        }else {
+            schedules = new ArrayList<>();
+        }
+
+        scheduleAdapter = new ScheduleTabAdapter(getContext(), schedules);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+        mRecyclerView = rootView.findViewById(R.id.schedule_view);
+        mRecyclerView.setAdapter(scheduleAdapter);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         return rootView;
@@ -53,7 +56,7 @@ public class ScheduleTab extends Fragment {
     public void onPause() {
         super.onPause();
         Log.i(TAG,"onPause " + schedules.size() + " " + scheduleAdapter);
-        schedules.clear();
+        //schedules.clear();
     }
 
     @Override

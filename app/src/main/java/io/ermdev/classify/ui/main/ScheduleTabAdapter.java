@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.ermdev.classify.R;
 import io.ermdev.classify.data.local.schedule.Schedule;
+import io.ermdev.classify.data.local.schedule.ScheduleDto;
 
 /**
  * Created by erafaelmanuel on 12/12/2017.
@@ -19,9 +21,9 @@ public class ScheduleTabAdapter extends RecyclerView.Adapter<ScheduleTabAdapter.
 
     private LayoutInflater mLayoutInflater;
     private Context mContext;
-    private List<Schedule> schedules;
+    private List<ScheduleDto> schedules;
 
-    public ScheduleTabAdapter(Context mContext, List<Schedule> schedules) {
+    public ScheduleTabAdapter(Context mContext, ArrayList<ScheduleDto> schedules) {
         this.mContext=mContext;
         this.schedules=schedules;
         mLayoutInflater=LayoutInflater.from(mContext);
