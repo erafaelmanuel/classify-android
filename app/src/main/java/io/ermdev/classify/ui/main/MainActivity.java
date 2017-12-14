@@ -16,10 +16,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import javax.inject.Inject;
-
 import io.ermdev.classify.R;
-import io.ermdev.classify.data.local.schedule.ScheduleDao;
 import io.ermdev.classify.data.local.schedule.ScheduleDto;
 import io.ermdev.classify.ui.BasicActivity;
 
@@ -30,17 +27,10 @@ public class MainActivity extends BasicActivity implements MainScreen {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
-    @Inject
-    private ScheduleDao scheduleDao;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        getDatabaseComponent().inject(this);
-
-        Log.i(TAG, scheduleDao + "");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,8 +39,8 @@ public class MainActivity extends BasicActivity implements MainScreen {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.setFragments(new Fragment[]{null, new Fragment(), new Fragment()});
 
-        MainPresenter mPresenter = new MainPresenter(this);
-        mPresenter.loadSchedules();
+        MainPresenter mPresenter = new MainPresenter(this, getDatabaseComponent());
+        mPresenter.onLoadSchedules();
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);

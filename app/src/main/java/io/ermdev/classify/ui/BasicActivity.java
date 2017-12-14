@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import io.ermdev.classify.di.component.AppComponent;
-import io.ermdev.classify.di.component.DaggerAppComponent;
 import io.ermdev.classify.di.component.DaggerDatabaseComponent;
 import io.ermdev.classify.di.component.DatabaseComponent;
 import io.ermdev.classify.di.module.AppModule;
@@ -16,23 +15,23 @@ import io.ermdev.classify.di.module.DatabaseModule;
  */
 
 public class BasicActivity extends AppCompatActivity {
-    private AppComponent appComponent;
-    private DatabaseComponent databaseComponent;
+    private AppComponent mAppComponent;
+    private DatabaseComponent mDatabaseComponent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(getApplication())).build();
-        databaseComponent = DaggerDatabaseComponent.builder()
-                .databaseModule(new DatabaseModule(getApplication())).build();
+        mDatabaseComponent = DaggerDatabaseComponent.builder()
+                .appModule(new AppModule(getApplication()))
+                .databaseModule(new DatabaseModule())
+                .build();
     }
 
     public AppComponent getAppComponent() {
-        return appComponent;
+        return mAppComponent;
     }
 
     public DatabaseComponent getDatabaseComponent() {
-        return databaseComponent;
+        return mDatabaseComponent;
     }
 }

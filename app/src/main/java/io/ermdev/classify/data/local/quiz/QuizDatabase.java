@@ -22,6 +22,7 @@ public abstract class QuizDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             QuizDatabase.class, "classify.db")
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

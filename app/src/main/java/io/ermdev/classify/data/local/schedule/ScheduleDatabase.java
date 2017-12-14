@@ -24,6 +24,7 @@ public abstract class ScheduleDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ScheduleDatabase.class, DATABASE_NAME)
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

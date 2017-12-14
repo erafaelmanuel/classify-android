@@ -1,10 +1,10 @@
 package io.ermdev.classify.di.module;
 
 import android.app.Application;
-import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import io.ermdev.mapfierj.SimpleMapper;
 
 /**
  * Created by erafaelmanuel on 11/28/2017.
@@ -13,19 +13,19 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    private final Application application;
+    private Application mApplication;
 
-    public AppModule(Application app) {
-        this.application = app;
+    public AppModule(Application mApplication){
+        this.mApplication = mApplication;
     }
 
     @Provides
-    Context provideContext() {
-        return application;
+    public Application providesApplication() {
+        return mApplication;
     }
 
     @Provides
-    Application provideApplication() {
-        return application;
+    public SimpleMapper providesSimpleMapper() {
+        return new SimpleMapper();
     }
 }

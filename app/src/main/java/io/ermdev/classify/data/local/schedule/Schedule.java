@@ -1,11 +1,13 @@
 package io.ermdev.classify.data.local.schedule;
 
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by erafaelmanuel on 12/12/2017.
  */
 
+@Entity(tableName = "tblschedule")
 public class Schedule {
 
     @PrimaryKey
