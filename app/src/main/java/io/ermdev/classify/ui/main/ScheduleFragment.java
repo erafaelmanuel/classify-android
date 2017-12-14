@@ -21,9 +21,9 @@ import io.ermdev.classify.data.local.schedule.ScheduleDto;
  * Created by erafaelmanuel on 12/11/2017.
  */
 
-public class ScheduleTab extends Fragment {
+public class ScheduleFragment extends Fragment {
 
-    private static final String TAG = ScheduleTab.class.getSimpleName();
+    private static final String TAG = ScheduleFragment.class.getSimpleName();
     private ArrayList<ScheduleDto> schedules = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private ScheduleTabAdapter scheduleAdapter;
@@ -32,17 +32,14 @@ public class ScheduleTab extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        Log.i(TAG,"onCreateView " + schedules.size());
-        View rootView = inflater.inflate(R.layout.fragment_main_schedule, container, false);
+        Log.i(TAG,"onCreateView ");
 
-        if(getArguments() != null) {
+        if(getArguments() != null)
             schedules = getArguments().getParcelableArrayList("schedules");
-        }else {
+        else
             schedules = new ArrayList<>();
-        }
 
-        Log.i(TAG, schedules.toString());
-
+        View rootView = inflater.inflate(R.layout.fragment_main_schedule, container, false);
         scheduleAdapter = new ScheduleTabAdapter(getContext(), schedules);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -57,25 +54,25 @@ public class ScheduleTab extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        Log.i(TAG,"onPause " + schedules.size() + " " + scheduleAdapter);
+        Log.i(TAG,"onPause");
         //schedules.clear();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(TAG,"onResume " + schedules.size());
+        Log.i(TAG,"onResume");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.i(TAG,"onStart " + schedules.size());
+        Log.i(TAG,"onStart");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i(TAG,"onDestroy " + schedules.size());
+        Log.i(TAG,"onDestroy");
     }
 }

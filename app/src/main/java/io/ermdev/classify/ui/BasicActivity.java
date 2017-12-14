@@ -25,7 +25,7 @@ public class BasicActivity extends AppCompatActivity {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplication())).build();
         databaseComponent = DaggerDatabaseComponent.builder()
-                .databaseModule(new DatabaseModule()).build();
+                .databaseModule(new DatabaseModule(getApplication())).build();
     }
 
     public AppComponent getAppComponent() {
