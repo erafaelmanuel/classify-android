@@ -87,11 +87,13 @@ public class MainActivity extends BasicActivity implements MainScreen {
 
     @Override
     public void showSchedules(ArrayList<ScheduleDto> schedules) {
-        Fragment fragment = mSectionsPagerAdapter.getItem(0);
+        ScheduleTab mScheduleFragment = new ScheduleTab();
         Bundle args = new Bundle();
-        args.putParcelableArrayList("schedules", schedules);
-        fragment.setArguments(args);
 
+        args.putParcelableArrayList("schedules", schedules);
+        mScheduleFragment.setArguments(args);
+
+        mSectionsPagerAdapter.getFragments()[0] = mScheduleFragment;
         Log.i("ScheduleTab", "showSchedules");
     }
 

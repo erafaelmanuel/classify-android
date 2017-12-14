@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +48,20 @@ public class ScheduleTabAdapter extends RecyclerView.Adapter<ScheduleTabAdapter.
 
     class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView textView1;
+        private TextView textView2;
+        private ScheduleDto schedule = new ScheduleDto();
+
         public ScheduleViewHolder(View itemView) {
             super(itemView);
+            textView1 = itemView.findViewById(R.id.text1);
+            textView2 = itemView.findViewById(R.id.text2);
         }
 
         public void setView(final int position) {
-
+            schedule = schedules.get(position);
+            textView1.setText(schedule.getDay());
+            textView2.setText(schedule.getRoom());
         }
     }
 }

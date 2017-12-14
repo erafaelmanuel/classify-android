@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorClouds">#ecf0f1</color>
     <color name="colorSilver">#bdc3c7</color>
+    <color name="colorWhite">#fff</color>
 </resources>

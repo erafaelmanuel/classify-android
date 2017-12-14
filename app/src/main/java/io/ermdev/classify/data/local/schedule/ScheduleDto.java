@@ -11,6 +11,7 @@ public class ScheduleDto implements Parcelable {
 
     private int id;
     private String day;
+    private String room;
     private String startTime;
     private String endTime;
 
@@ -19,6 +20,7 @@ public class ScheduleDto implements Parcelable {
     protected ScheduleDto(Parcel in) {
         id=in.readInt();
         day=in.readString();
+        room=in.readString();
         startTime=in.readString();
         endTime=in.readString();
     }
@@ -44,6 +46,7 @@ public class ScheduleDto implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(day);
+        parcel.writeString(room);
         parcel.writeString(startTime);
         parcel.writeString(endTime);
     }
@@ -64,6 +67,14 @@ public class ScheduleDto implements Parcelable {
         this.day = day;
     }
 
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
     public String getStartTime() {
         return startTime;
     }
@@ -78,5 +89,16 @@ public class ScheduleDto implements Parcelable {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ScheduleDto{" +
+                "id=" + id +
+                ", day='" + day + '\'' +
+                ", room='" + room + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                '}';
     }
 }

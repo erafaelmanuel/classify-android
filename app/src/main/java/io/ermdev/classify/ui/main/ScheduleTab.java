@@ -41,6 +41,8 @@ public class ScheduleTab extends Fragment {
             schedules = new ArrayList<>();
         }
 
+        Log.i(TAG, schedules.toString());
+
         scheduleAdapter = new ScheduleTabAdapter(getContext(), schedules);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

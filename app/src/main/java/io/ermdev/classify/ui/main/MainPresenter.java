@@ -19,15 +19,17 @@ public class MainPresenter {
         ArrayList<ScheduleDto> scheduleDtos = new ArrayList<>();
         ScheduleDto scheduleDto = new ScheduleDto();
         scheduleDto.setId(1);
-        scheduleDto.setDay("Monday");
+        scheduleDto.setDay("Object Oriented Programming 2");
+        scheduleDto.setRoom("Room CS 101");
         scheduleDto.setStartTime("01:00 PM");
         scheduleDto.setEndTime("03:00 PM");
 
         ScheduleDto scheduleDto2 = new ScheduleDto();
-        scheduleDto.setId(2);
-        scheduleDto.setDay("Tuesday");
-        scheduleDto.setStartTime("09:00 AM");
-        scheduleDto.setEndTime("12:00 PM");
+        scheduleDto2.setId(2);
+        scheduleDto2.setDay("English 1");
+        scheduleDto2.setRoom("Room CS 102");
+        scheduleDto2.setStartTime("09:00 AM");
+        scheduleDto2.setEndTime("12:00 PM");
 
         scheduleDtos.add(scheduleDto);
         scheduleDtos.add(scheduleDto2);
