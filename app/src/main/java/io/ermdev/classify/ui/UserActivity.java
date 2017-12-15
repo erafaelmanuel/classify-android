@@ -9,7 +9,7 @@ import android.view.View;
 import javax.inject.Inject;
 
 import io.ermdev.classify.R;
-import io.ermdev.classify.data.local.user.Order;
+import io.ermdev.classify.data.local.user.User;
 import io.ermdev.classify.data.remote.client.UserClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +20,7 @@ public class UserActivity extends BasicActivity {
 
     @Inject
     Retrofit retrofit;
-
+    User user_123 = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,39 +30,40 @@ public class UserActivity extends BasicActivity {
 
         getRestClientComponent().inject(this);
 
+        final UserClient userClient = retrofit.create(UserClient.class);
+        User user = new User();
+
+        user.setUsername("ronaldmanuel123");
+        user.setPassword("passwordabc");
+
+        Call<User> callPost = userClient.addUser(user);
+
+        callPost.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                user_123=response.body();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-//                UserClient userClient = retrofit.create(UserClient.class);
-//                Call<User> call = userClient.getById(1);
-//                call.enqueue(new Callback<User>() {
-//                    @Override
-//                    public void onResponse(Call<User> call, Response<User> response) {
-//                        User user = response.body();
-//                        Snackbar.make(view, user.toString(), Snackbar.LENGTH_LONG)
-//                                .setAction("Action", null).show();
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<User> call, Throwable t) {
-//                        Snackbar.make(view, "Connection error", Snackbar.LENGTH_LONG)
-//                                .setAction("Action", null).show();
-//                    }
-//                });
-
-                UserClient userClient = retrofit.create(UserClient.class);
-                Call<Order> call = userClient.getSomething();
-                call.enqueue(new Callback<Order>() {
+                Call<User> callGet = userClient.getById(user_123.getId());
+                callGet.enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<Order> call, Response<Order> response) {
-                        Order order = response.body();
-                        Snackbar.make(view, order.getMessage(), Snackbar.LENGTH_LONG)
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        Snackbar.make(view, response.body().toString(), Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
 
                     @Override
-                    public void onFailure(Call<Order> call, Throwable t) {
+                    public void onFailure(Call<User> call, Throwable t) {
                         Snackbar.make(view, "Connection error", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
