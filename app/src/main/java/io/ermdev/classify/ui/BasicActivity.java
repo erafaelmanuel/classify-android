@@ -7,9 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import io.ermdev.classify.di.component.AppComponent;
 import io.ermdev.classify.di.component.DaggerAppComponent;
 import io.ermdev.classify.di.component.DaggerDatabaseComponent;
+import io.ermdev.classify.di.component.DaggerRestClientComponent;
 import io.ermdev.classify.di.component.DatabaseComponent;
+import io.ermdev.classify.di.component.RestClientComponent;
 import io.ermdev.classify.di.module.AppModule;
 import io.ermdev.classify.di.module.DatabaseModule;
+import io.ermdev.classify.di.module.RestClientModule;
 
 /**
  * Created by erafaelmanuel on 12/11/2017.
@@ -18,6 +21,7 @@ import io.ermdev.classify.di.module.DatabaseModule;
 public class BasicActivity extends AppCompatActivity {
     private AppComponent mAppComponent;
     private DatabaseComponent mDatabaseComponent;
+    private RestClientComponent mRestClientComponent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +33,9 @@ public class BasicActivity extends AppCompatActivity {
                 .appModule(new AppModule(getApplication()))
                 .databaseModule(new DatabaseModule())
                 .build();
+        mRestClientComponent = DaggerRestClientComponent.builder()
+                .restClientModule(new RestClientModule())
+                .build();
     }
 
     public AppComponent getAppComponent() {
@@ -37,5 +44,9 @@ public class BasicActivity extends AppCompatActivity {
 
     public DatabaseComponent getDatabaseComponent() {
         return mDatabaseComponent;
+    }
+
+    public RestClientComponent getRestClientComponent() {
+        return mRestClientComponent;
     }
 }

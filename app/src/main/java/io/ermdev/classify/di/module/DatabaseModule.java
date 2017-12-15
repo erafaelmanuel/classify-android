@@ -23,5 +23,4 @@ public class DatabaseModule {
     public ScheduleDao providesScheduleDao(ScheduleDatabase mScheduleDatabase) {
         return mScheduleDatabase.scheduleDao();
     }
-
 }
