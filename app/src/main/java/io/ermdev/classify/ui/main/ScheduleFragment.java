@@ -26,7 +26,7 @@ public class ScheduleFragment extends Fragment {
     private static final String TAG = ScheduleFragment.class.getSimpleName();
     private ArrayList<ScheduleDto> schedules = new ArrayList<>();
     private RecyclerView mRecyclerView;
-    private ScheduleTabAdapter scheduleAdapter;
+    private ScheduleViewAdapter mScheduleViewAdapter;
 
     @Nullable
     @Override
@@ -40,12 +40,12 @@ public class ScheduleFragment extends Fragment {
             schedules = new ArrayList<>();
 
         View rootView = inflater.inflate(R.layout.fragment_main_schedule, container, false);
-        scheduleAdapter = new ScheduleTabAdapter(getContext(), schedules);
+        mScheduleViewAdapter = new ScheduleViewAdapter(getContext(), schedules);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         mRecyclerView = rootView.findViewById(R.id.schedule_view);
-        mRecyclerView.setAdapter(scheduleAdapter);
+        mRecyclerView.setAdapter(mScheduleViewAdapter);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         return rootView;

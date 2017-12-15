@@ -11,7 +11,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Schedule {
 
     @PrimaryKey
-    private int id;
+    private long id;
     private String day;
     private String room;
     private String startTime;
@@ -20,11 +20,11 @@ public class Schedule {
     public Schedule() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

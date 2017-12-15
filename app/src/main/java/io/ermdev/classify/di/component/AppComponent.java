@@ -2,6 +2,7 @@ package io.ermdev.classify.di.component;
 
 import dagger.Component;
 import io.ermdev.classify.di.module.AppModule;
+import io.ermdev.classify.ui.UserActivity;
 import io.ermdev.classify.ui.main.MainActivity;
 
 /**
@@ -12,4 +13,6 @@ import io.ermdev.classify.ui.main.MainActivity;
 public interface AppComponent {
 
     void inject(MainActivity mActivity);
+
+    void inject(UserActivity mUserActivity);
 }

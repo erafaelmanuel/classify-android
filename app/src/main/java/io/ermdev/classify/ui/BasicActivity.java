@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import io.ermdev.classify.di.component.AppComponent;
+import io.ermdev.classify.di.component.DaggerAppComponent;
 import io.ermdev.classify.di.component.DaggerDatabaseComponent;
 import io.ermdev.classify.di.component.DatabaseComponent;
 import io.ermdev.classify.di.module.AppModule;
@@ -21,6 +22,9 @@ public class BasicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAppComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(getApplication()))
+                .build();
         mDatabaseComponent = DaggerDatabaseComponent.builder()
                 .appModule(new AppModule(getApplication()))
                 .databaseModule(new DatabaseModule())

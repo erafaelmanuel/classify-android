@@ -1,5 +1,7 @@
 package io.ermdev.classify.ui.main;
 
+import android.os.Looper;
+
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -33,15 +35,18 @@ public class MainPresenter {
     }
 
     public void onLoadSchedules() {
-        ArrayList<ScheduleDto> schedules = new ArrayList<>();
-        Schedule schedule = scheduleDao.findById((long)1);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<ScheduleDto> schedules = new ArrayList<>();
+                Schedule schedule = scheduleDao.findById((long)1);
 //        schedule.setId(1);
 //        schedule.setDay("Object Oriented Programming 2");
 //        schedule.setRoom("Room CS 101");
 //        schedule.setStartTime("01:00 PM");
 //        schedule.setEndTime("03:00 PM");
 //
-        Schedule schedule1 = scheduleDao.findById((long)2);
+                Schedule schedule1 = scheduleDao.findById((long)2);
 //        schedule1.setId(2);
 //        schedule1.setDay("English 1");
 //        schedule1.setRoom("Room CS 102");
@@ -51,9 +56,16 @@ public class MainPresenter {
 //        scheduleDao.save(schedule);
 //        scheduleDao.save(schedule1);
 
-        schedules.add(mapper.set(schedule).mapTo(ScheduleDto.class));
-        schedules.add(mapper.set(schedule1).mapTo(ScheduleDto.class));
+                try {
+//                    schedules.add(mapper.set(schedule).mapTo(ScheduleDto.class));
+//                    schedules.add(mapper.set(schedule1).mapTo(ScheduleDto.class));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-        mScreen.showSchedules(schedules);
+                mScreen.showSchedules(schedules);
+            }
+        }).start();
+
     }
 }

@@ -9,7 +9,7 @@ import android.os.Parcelable;
 
 public class ScheduleDto implements Parcelable {
 
-    private int id;
+    private long id;
     private String day;
     private String room;
     private String startTime;
@@ -18,7 +18,7 @@ public class ScheduleDto implements Parcelable {
     public ScheduleDto() {}
 
     protected ScheduleDto(Parcel in) {
-        id=in.readInt();
+        id=in.readLong();
         day=in.readString();
         room=in.readString();
         startTime=in.readString();
@@ -44,18 +44,18 @@ public class ScheduleDto implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
+        parcel.writeLong(id);
         parcel.writeString(day);
         parcel.writeString(room);
         parcel.writeString(startTime);
         parcel.writeString(endTime);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
