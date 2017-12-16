@@ -1,25 +1,25 @@
-package io.ermdev.classify.data.local.student;
+package io.ermdev.classify.data.local.teacher;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
- * Created by erafaelmanuel on 12/2/2017.
+ * Created by erafaelmanuel on 12/16/2017.
  */
 
-@Entity(tableName = "tblstudent")
-public class Student {
+@Entity(tableName = "tblteacher")
+public class Teacher {
 
     @PrimaryKey
-    private Long id;
+    private long id;
     private String firstName;
     private String lastName;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
