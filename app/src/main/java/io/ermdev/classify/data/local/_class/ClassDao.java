@@ -23,11 +23,11 @@ public interface ClassDao {
     List<Class> getAll();
 
     @Insert
-    void add(Class... _class);
+    void add(Class... classes);
 
     @Update
-    void update(Class... _class);
+    void update(Class... classes);
 
     @DELETE
-    void delete(Class... _class);
+    void delete(Class... classes);
 }
