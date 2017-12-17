@@ -1,0 +1,8 @@
+package io.ermdev.classify.data.local.student;
+
+/**
+ * Created by Remsama on 12/17/2017.
+ */
+
+public class StudentRepository {
+}

@@ -8,6 +8,8 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import io.ermdev.classify.data.local.student.Student;
+
 /**
  * Created by erafaelmanuel on 12/16/2017.
  */
@@ -20,6 +22,9 @@ public interface ClassDao {
 
     @Query("SELECT * FROM tblclass")
     List<Class> getAll();
+
+    @Query("SELECT * FROM tblstudent AS S JOIN tblclass AS C ON S.id=C.studentId WHERE C.id=:classId LIMIT 1")
+    Student getStudent(long classId);
 
     @Insert
     void add(Class... classes);

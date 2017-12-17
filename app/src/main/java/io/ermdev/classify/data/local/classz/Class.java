@@ -2,6 +2,7 @@ package io.ermdev.classify.data.local._class;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.ermdev.classify.data.local.student.Student;
@@ -22,31 +23,40 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 public class Class {
 
     @PrimaryKey
-    private Long id;
-    private Student studentId;
-    private Teacher teacherId;
+    private long id;
+    private long studentId;
+    private long teacherId;
 
-    public Long getId() {
+    @Ignore
+    public Class(){}
+
+    public Class(long id, long studentId, long teacherId) {
+        this.id = id;
+        this.studentId = studentId;
+        this.teacherId = teacherId;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Student getStudentId() {
+    public long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Student studentId) {
+    public void setStudentId(long studentId) {
         this.studentId = studentId;
     }
 
-    public Teacher getTeacherId() {
+    public long getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(Teacher teacherId) {
+    public void setTeacherId(long teacherId) {
         this.teacherId = teacherId;
     }
 }
