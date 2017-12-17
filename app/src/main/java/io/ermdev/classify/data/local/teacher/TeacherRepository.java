@@ -1,59 +1,24 @@
-package io.ermdev.classify.data.local.student;
+package io.ermdev.classify.data.local.teacher;
 
-import android.os.AsyncTask;
-import android.util.Log;
+import java.util.List;
 
 /**
- * Created by Remsama on 12/17/2017.
+ * Created by erafaelmanuel on 12/17/2017.
  */
 
-public class StudentRepository  {
+public class TeacherRepository {
 
-    private StudentDao studentDao;
+    private TeacherDao teacherDao;
 
-    public StudentRepository(StudentDao studentDao){
-        this.studentDao = studentDao;
+    public TeacherRepository(TeacherDao teacherDao){
+        this.teacherDao = teacherDao;
     }
 
-    public void add(final Student student) {
-        StudentTask studentTask = new StudentTask();
-        studentTask.setTask(new Task() {
-            @Override
-            public void doStaff() {
-                studentDao.insert(student);
-            }
-        });
-        studentTask.execute();
+    public List<Teacher> getAll() {
+        return teacherDao.getAll();
     }
 
-    public void getAll() {
-        StudentTask studentTask = new StudentTask();
-        studentTask.setTask(new Task() {
-            @Override
-            public void doStaff() {
-                Log.i(StudentRepository.class.getSimpleName(), studentDao.getAll().toString());
-            }
-        });
-        studentTask.execute();
-    }
-
-    static class StudentTask extends AsyncTask<Void, Void, Void>{
-
-        Task task;
-
-        public void setTask(Task task) {
-            this.task = task;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            task.doStaff();
-            return null;
-        }
-    }
-
-    @FunctionalInterface
-    interface Task {
-        void doStaff();
+    public void add(Teacher teacher) {
+        teacherDao.insert(teacher);
     }
 }

@@ -22,7 +22,10 @@ public interface StudentDao {
     List<Student> getAll();
 
     @Insert
-    void add(Student... students);
+    void insert(Student student);
+
+    @Insert
+    void insertAll(Student... students);
 
     @Update
     void update(Student... students);

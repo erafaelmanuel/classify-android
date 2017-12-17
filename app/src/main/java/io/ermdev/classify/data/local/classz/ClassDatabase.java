@@ -1,12 +1,8 @@
-package io.ermdev.classify.data.local._class;
+package io.ermdev.classify.data.local.classz;
 
-import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-
-import io.ermdev.classify.data.local.student.Student;
-import io.ermdev.classify.data.local.teacher.Teacher;
 
 /**
  * Created by erafaelmanuel on 12/16/2017.

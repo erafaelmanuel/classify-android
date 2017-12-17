@@ -9,7 +9,7 @@ import android.content.Context;
  * Created by erafaelmanuel on 12/1/2017.
  */
 
-@Database(entities = Quiz.class, version = 1)
+//@Database(entities = Quiz.class, version = 1)
 public abstract class QuizDatabase extends RoomDatabase {
 
     private static volatile QuizDatabase INSTANCE;
@@ -21,7 +21,7 @@ public abstract class QuizDatabase extends RoomDatabase {
             synchronized (QuizDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            QuizDatabase.class, "classify.db")
+                            QuizDatabase.class, "")
                             .allowMainThreadQueries()
                             .build();
                 }

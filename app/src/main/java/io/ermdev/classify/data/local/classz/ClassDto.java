@@ -1,4 +1,4 @@
-package io.ermdev.classify.data.local._class;
+package io.ermdev.classify.data.local.classz;
 
 import io.ermdev.classify.data.local.student.Student;
 import io.ermdev.classify.data.local.teacher.Teacher;

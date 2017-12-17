@@ -12,5 +12,4 @@ import io.ermdev.classify.ui.main.MainActivity;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
 
-    void inject(MainActivity mActivity);
 }

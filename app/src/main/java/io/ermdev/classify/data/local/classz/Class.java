@@ -1,4 +1,4 @@
-package io.ermdev.classify.data.local._class;
+package io.ermdev.classify.data.local.classz;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;

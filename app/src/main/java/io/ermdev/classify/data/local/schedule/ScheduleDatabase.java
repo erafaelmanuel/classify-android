@@ -9,10 +9,10 @@ import android.content.Context;
  * Created by erafaelmanuel on 12/14/2017.
  */
 
-@Database(entities = Schedule.class, version = 1)
+//@Database(entities = Schedule.class, version = 1)
 public abstract class ScheduleDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "classify.db";
+    private static final String DATABASE_NAME = "";
 
     private static volatile ScheduleDatabase INSTANCE;
 

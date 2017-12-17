@@ -1,4 +1,4 @@
-package io.ermdev.classify.data.local._class;
+package io.ermdev.classify.data.local.classz;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;

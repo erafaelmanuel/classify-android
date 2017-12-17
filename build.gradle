@@ -27,3 +27,13 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    archVersion = '1.0.0'
+
+    archRuntime = "android.arch.lifecycle:runtime:$archVersion"
+    archExtension = "android.arch.lifecycle:extensions:$archVersion"
+    archCompiler = "android.arch.lifecycle:compiler:$archVersion"
+    roomRuntime = "android.arch.persistence.room:runtime:$archVersion"
+    roomCompiler = "android.arch.persistence.room:compiler:$archVersion"
+}

@@ -1,9 +1,13 @@
 package io.ermdev.classify.di.module;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.ermdev.classify.data.local.AppDatabase;
 import io.ermdev.mapfierj.SimpleMapper;
 
 /**

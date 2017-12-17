@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import io.ermdev.classify.di.component.AppComponent;
 import io.ermdev.classify.di.component.DaggerAppComponent;
-import io.ermdev.classify.di.component.DaggerDatabaseComponent;
+import io.ermdev.classify.di.component.DaggerPersistenceComponent;
 import io.ermdev.classify.di.component.DaggerRestClientComponent;
-import io.ermdev.classify.di.component.DatabaseComponent;
+import io.ermdev.classify.di.component.PersistenceComponent;
 import io.ermdev.classify.di.component.RestClientComponent;
 import io.ermdev.classify.di.module.AppModule;
-import io.ermdev.classify.di.module.DatabaseModule;
+import io.ermdev.classify.di.module.PersistenceModule;
 import io.ermdev.classify.di.module.RestClientModule;
 
 /**
@@ -20,7 +20,8 @@ import io.ermdev.classify.di.module.RestClientModule;
 
 public class BasicActivity extends AppCompatActivity {
     private AppComponent mAppComponent;
-    private DatabaseComponent mDatabaseComponent;
+    private PersistenceComponent mPersistenceComponent;
+
     private RestClientComponent mRestClientComponent;
 
     @Override
@@ -29,9 +30,9 @@ public class BasicActivity extends AppCompatActivity {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(getApplication()))
                 .build();
-        mDatabaseComponent = DaggerDatabaseComponent.builder()
+        mPersistenceComponent = DaggerPersistenceComponent.builder()
                 .appModule(new AppModule(getApplication()))
-                .databaseModule(new DatabaseModule())
+                .persistenceModule(new PersistenceModule())
                 .build();
         mRestClientComponent = DaggerRestClientComponent.builder()
                 .restClientModule(new RestClientModule())
@@ -42,8 +43,8 @@ public class BasicActivity extends AppCompatActivity {
         return mAppComponent;
     }
 
-    public DatabaseComponent getDatabaseComponent() {
-        return mDatabaseComponent;
+    public PersistenceComponent getmPersistenceComponent() {
+        return mPersistenceComponent;
     }
 
     public RestClientComponent getRestClientComponent() {

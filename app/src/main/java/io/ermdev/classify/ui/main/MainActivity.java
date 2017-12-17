@@ -39,7 +39,7 @@ public class MainActivity extends BasicActivity implements MainScreen {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.setFragments(new Fragment[]{null, new Fragment(), new Fragment()});
 
-        MainPresenter mPresenter = new MainPresenter(this, getDatabaseComponent());
+        MainPresenter mPresenter = new MainPresenter(this, getmPersistenceComponent());
         mPresenter.onLoadSchedules();
 
         // Set up the ViewPager with the sections adapter.

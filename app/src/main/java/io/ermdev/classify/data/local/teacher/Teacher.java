@@ -1,6 +1,7 @@
 package io.ermdev.classify.data.local.teacher;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -14,6 +15,15 @@ public class Teacher {
     private long id;
     private String firstName;
     private String lastName;
+
+    @Ignore
+    public Teacher(){}
+
+    public Teacher(long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public long getId() {
         return id;
@@ -37,5 +47,14 @@ public class Teacher {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

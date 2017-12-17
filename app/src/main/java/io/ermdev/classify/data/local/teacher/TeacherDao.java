@@ -22,11 +22,20 @@ public interface TeacherDao {
     List<Teacher> getAll();
 
     @Insert
-    void add(Teacher... teachers);
+    void insert(Teacher teacher);
+
+    @Insert
+    void insertAll(Teacher... teachers);
 
     @Update
-    void update(Teacher... teachers);
+    void update(Teacher teachers);
+
+    @Update
+    void updateAll(Teacher... teachers);
 
     @Delete
-    void delete(Teacher... teachers);
+    void delete(Teacher teacher);
+
+    @Delete
+    void deleteAll(Teacher... teachers);
 }
