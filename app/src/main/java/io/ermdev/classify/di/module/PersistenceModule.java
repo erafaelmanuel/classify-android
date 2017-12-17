@@ -8,8 +8,10 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.ermdev.classify.data.local.AppDatabase;
+import io.ermdev.classify.data.local.classz.ClassRepository;
 import io.ermdev.classify.data.local.student.StudentRepository;
 import io.ermdev.classify.data.local.teacher.TeacherRepository;
+import io.ermdev.mapfierj.SimpleMapper;
 
 /**
  * Created by erafaelmanuel on 12/17/2017.
@@ -37,5 +39,11 @@ public class PersistenceModule {
     @Singleton
     public TeacherRepository providesTeacherRepository(AppDatabase mAppDatabase) {
         return new TeacherRepository(mAppDatabase.teacherDao());
+    }
+
+    @Provides
+    @Singleton
+    public ClassRepository providesClassRepository(AppDatabase mAppDatabase, SimpleMapper mapper) {
+        return new ClassRepository(mAppDatabase.classDao(), mAppDatabase.studentDao(), mAppDatabase.teacherDao(), mapper);
     }
 }

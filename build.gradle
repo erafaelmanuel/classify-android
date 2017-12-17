@@ -34,7 +34,7 @@ ext {
     daggerVersion = '2.11'
     retrofitVersion = '2.3.0'
     gsonConverterVersion = '2.3.0'
-    mapfierJVersion = "v1.0-beta.3"
+    mapfierJVersion = "-SNAPSHOT"
 
     supportLibAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
     supportLibDesign = "com.android.support:design:$supportLibVersion"

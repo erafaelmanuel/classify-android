@@ -2,6 +2,7 @@ package io.ermdev.classify.data.local.classz;
 
 import io.ermdev.classify.data.local.student.Student;
 import io.ermdev.classify.data.local.teacher.Teacher;
+import io.ermdev.mapfierj.Excluded;
 
 /**
  * Created by erafaelmanuel on 12/16/2017.
@@ -10,7 +11,11 @@ import io.ermdev.classify.data.local.teacher.Teacher;
 public class ClassDto {
 
     private long id;
+
+    @Excluded
     private Student student;
+
+    @Excluded
     private Teacher teacher;
 
     public long getId() {
@@ -35,5 +40,14 @@ public class ClassDto {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    @Override
+    public String toString() {
+        return "ClassDto{" +
+                "id=" + id +
+                ", student=" + student +
+                ", teacher=" + teacher +
+                '}';
     }
 }

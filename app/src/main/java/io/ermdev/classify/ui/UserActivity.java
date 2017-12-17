@@ -7,6 +7,8 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import io.ermdev.classify.R;
+import io.ermdev.classify.data.local.classz.Class;
+import io.ermdev.classify.data.local.classz.ClassRepository;
 import io.ermdev.classify.data.local.student.Student;
 import io.ermdev.classify.data.local.student.StudentRepository;
 import io.ermdev.classify.data.local.teacher.Teacher;
@@ -20,6 +22,9 @@ public class UserActivity extends BasicActivity {
     @Inject
     TeacherRepository teacherRepository;
 
+    @Inject
+    ClassRepository classRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,18 +35,21 @@ public class UserActivity extends BasicActivity {
 
         getmPersistenceComponent().inject(this);
 
-//        this.deleteDatabase("classify.db");
-//        this.deleteDatabase("classify");
+        this.deleteDatabase("classify.db");
+        this.deleteDatabase("classify");
 
         Student student = new Student(1L, "Rafael", "Manuel");
 
         Teacher teacher = new Teacher(1L, "Ralen", "Mandap");
 
-//        studentRepository.add(student);
-//        teacherRepository.add(teacher);
+        studentRepository.add(student);
+        teacherRepository.add(teacher);
+
+        classRepository.add(new Class(1, 1, 1));
 
         Log.i(this.getClass().getSimpleName(), teacherRepository.getAll().toString());
         Log.i(this.getClass().getSimpleName(), studentRepository.getAll().toString());
+        Log.i(this.getClass().getSimpleName(), classRepository.getById(1).toString());
 
 
 

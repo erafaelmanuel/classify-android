@@ -3,6 +3,7 @@ package io.ermdev.classify.data.local.classz;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.ermdev.classify.data.local.student.Student;
@@ -14,7 +15,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by erafaelmanuel on 12/1/2017.
  */
 
-@Entity(tableName = "tblclass", foreignKeys = {
+@Entity(tableName = "tblclass",
+        indices = {@Index("studentId"), @Index("teacherId")},
+        foreignKeys = {
         @ForeignKey(entity = Student.class, parentColumns = "id", childColumns = "studentId",
                 onDelete = CASCADE, onUpdate = CASCADE),
         @ForeignKey(entity = Teacher.class, parentColumns = "id", childColumns = "teacherId",
@@ -58,5 +61,14 @@ public class Class {
 
     public void setTeacherId(long teacherId) {
         this.teacherId = teacherId;
+    }
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "id=" + id +
+                ", studentId=" + studentId +
+                ", teacherId=" + teacherId +
+                '}';
     }
 }
