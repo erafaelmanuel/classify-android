@@ -6,9 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 //apply plugin: 'kotlin-kapt'
 
-def supportVersion = '27.0.2'
-def daggerVersion = 2.10
-
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -30,32 +27,34 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    compile "com.android.support:design:$supportVersion"
-    compile "com.android.support:recyclerview-v7:$supportVersion"
-    compile "com.android.support:cardview-v7:$supportVersion"
-    compile "com.android.support:support-v4:$supportVersion"
+    //support lib
+    implementation rootProject.ext.supportLibAppCompat
+    implementation rootProject.ext.supportLibDesign
+    implementation rootProject.ext.supportLibRecyclerView
+    implementation rootProject.ext.supportLibCardView
 
-    compile rootProject.ext.archRuntime
-    compile rootProject.ext.archExtension
+    //architecture library
+    implementation rootProject.ext.archRuntime
+    implementation rootProject.ext.archExtension
     annotationProcessor rootProject.ext.archCompiler
 
-    compile rootProject.ext.roomRuntime
+    implementation rootProject.ext.roomRuntime
     annotationProcessor rootProject.ext.roomCompiler
 
-    // dagger 2
-    compile "com.google.dagger:dagger:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-
-    // my library
-    compile 'com.github.erafaelmanuel:mapfierJ:v1.0-beta.3'
+    // dagger
+    annotationProcessor rootProject.ext.daggerCompiler
+    implementation rootProject.ext.dagger
+    implementation rootProject.ext.daggerAndroid
+    implementation rootProject.ext.daggerAndroidSupport
+    annotationProcessor rootProject.ext.daggerAndroidProcessor
 
     // rest client
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.google.code.gson:gson:2.8.2'
+    implementation rootProject.ext.retrofit
+    implementation rootProject.ext.gsonConverter
+
+    implementation rootProject.ext.mapfierJ
 
     // test
     testImplementation 'junit:junit:4.12'

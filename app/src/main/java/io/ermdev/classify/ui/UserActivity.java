@@ -14,7 +14,6 @@ import io.ermdev.classify.data.local.teacher.TeacherRepository;
 
 public class UserActivity extends BasicActivity {
 
-
     @Inject
     StudentRepository studentRepository;
 
