@@ -1,8 +1,10 @@
 package io.ermdev.classify.ui;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -13,6 +15,10 @@ import io.ermdev.classify.data.local.student.Student;
 import io.ermdev.classify.data.local.student.StudentRepository;
 import io.ermdev.classify.data.local.teacher.Teacher;
 import io.ermdev.classify.data.local.teacher.TeacherRepository;
+import io.ermdev.classify.data.local.user.User;
+import io.ermdev.classify.databinding.ActivityUserBinding;
+import io.ermdev.classify.viewmodel.SomethingFunction;
+import io.ermdev.classify.viewmodel.UserViewModel;
 
 public class UserActivity extends BasicActivity {
 
@@ -25,12 +31,30 @@ public class UserActivity extends BasicActivity {
     @Inject
     ClassRepository classRepository;
 
+    ActivityUserBinding mActivityUserBinding;
+    UserViewModel mUserViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+
+        mUserViewModel = new UserViewModel(new User());
+        mActivityUserBinding = DataBindingUtil.setContentView(this, R.layout.activity_user);
+        mActivityUserBinding.setUserViewModel(mUserViewModel);
+        mActivityUserBinding.setSomethingFunction(new SomethingFunction() {
+            @Override
+            public void doIt() {
+                Toast.makeText(getApplication(),
+                        "username " + mUserViewModel.getUsername() + " password" + mUserViewModel.getPassword(), Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
 
         getmPersistenceComponent().inject(this);
