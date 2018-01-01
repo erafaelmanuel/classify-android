@@ -4,14 +4,12 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-//apply plugin: 'kotlin-kapt'
-
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "io.ermdev.classify"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,44 +20,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-
-    //support lib
-    implementation rootProject.ext.supportLibAppCompat
-    implementation rootProject.ext.supportLibDesign
-    implementation rootProject.ext.supportLibRecyclerView
-    implementation rootProject.ext.supportLibCardView
-
-    //architecture library
-    implementation rootProject.ext.archRuntime
-    implementation rootProject.ext.archExtension
-    annotationProcessor rootProject.ext.archCompiler
-
-    implementation rootProject.ext.roomRuntime
-    annotationProcessor rootProject.ext.roomCompiler
-
-    // dagger
-    annotationProcessor rootProject.ext.daggerCompiler
-    implementation rootProject.ext.dagger
-    implementation rootProject.ext.daggerAndroid
-    implementation rootProject.ext.daggerAndroidSupport
-    annotationProcessor rootProject.ext.daggerAndroidProcessor
-
-    // rest client
-    implementation rootProject.ext.retrofit
-    implementation rootProject.ext.gsonConverter
-
-    implementation rootProject.ext.mapfierJ
-
-    // test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
