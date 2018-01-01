@@ -1,7 +1,8 @@
-package io.ermdev.classify
+package io.ermdev.classify.ui.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import io.ermdev.classify.R
 
 class MainActivity : AppCompatActivity() {
 
