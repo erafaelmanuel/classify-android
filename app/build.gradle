@@ -38,13 +38,9 @@ dependencies {
     implementation rootProject.ext.supportLibRecyclerView
     implementation rootProject.ext.supportLibCardView
 
-    //architecture library
-    implementation rootProject.ext.archRuntime
-    implementation rootProject.ext.archExtension
-    annotationProcessor rootProject.ext.archCompiler
-
+    //room
     implementation rootProject.ext.roomRuntime
-    annotationProcessor rootProject.ext.roomCompiler
+    kapt rootProject.ext.roomCompiler
 
     // dagger
     implementation rootProject.ext.dagger
