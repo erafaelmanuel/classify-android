@@ -1,7 +1,11 @@
 package io.ermdev.classify.di.component
 
+import dagger.Component
+
 /**
- * Created by Remsama on 1/3/2018.
+ * Created by erafaelmanuel on 1/3/2018.
  */
+
+@Component
 interface DatabaseComponent {
 }
