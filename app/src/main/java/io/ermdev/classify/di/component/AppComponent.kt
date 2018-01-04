@@ -2,7 +2,6 @@ package io.ermdev.classify.di.component
 
 import dagger.Component
 import io.ermdev.classify.di.module.AppModule
-import io.ermdev.classify.ui.main.MainActivity
 import javax.inject.Singleton
 
 /**
