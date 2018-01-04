@@ -7,8 +7,11 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.*
 import io.ermdev.classify.R
+import io.ermdev.classify.data.entity.Teacher
 import io.ermdev.classify.data.local.AppDatabase
+import io.ermdev.classify.data.local.entity.Dog
 import io.ermdev.classify.ui.BasicActivity
+import io.ermdev.mapfierj.cj7.ModelMapper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import javax.inject.Inject
@@ -33,10 +36,18 @@ class MainActivity : BasicActivity() {
 
         container.adapter = mSectionsPagerAdapter
 
+        var mapper = ModelMapper();
+        var dog = mapper.set(Teacher(1,"rafael","manuel"))
+                .field("firstName", "name")
+                .transaction.mapTo(Dog::class.java)
+        System.out.println(dog)
+
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, dog.toString(), Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+
     }
 
 
