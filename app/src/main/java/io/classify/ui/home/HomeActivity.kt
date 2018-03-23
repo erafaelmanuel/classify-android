@@ -10,11 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import io.classify.R
 import io.classify.data.model.Schedule
-import io.classify.ui.BasicActivity
+import io.classify.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-class HomeActivity : BasicActivity(), HomeView {
+class HomeActivity : BaseActivity(), HomeView {
 
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

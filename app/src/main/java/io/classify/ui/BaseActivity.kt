@@ -7,7 +7,7 @@ import io.classify.di.component.DaggerAppComponent
 import io.classify.di.module.AppModule
 import io.classify.di.module.RetrofitModule
 
-open class BasicActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     lateinit var appComponent: AppComponent
 
@@ -17,7 +17,7 @@ open class BasicActivity : AppCompatActivity() {
         appComponent = DaggerAppComponent
                 .builder()
                 .appModule(AppModule(application))
-                .retrofitModule(RetrofitModule("http://192.168.0.104:8080/api/"))
+                .retrofitModule(RetrofitModule("http://192.168.0.105:8085/api/"))
                 .build()
     }
 }
