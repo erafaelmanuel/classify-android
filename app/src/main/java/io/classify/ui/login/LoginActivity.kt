@@ -63,11 +63,11 @@ class LoginActivity : BaseActivity(), LoginView, View.OnClickListener {
     }
 
     override fun setUsernameError() {
-        txUsername.error = getString(R.string.username_error);
+        txUsername.error = getString(R.string.error_empty_username);
     }
 
     override fun setPasswordError() {
-        txPassword.error = getString(R.string.password_error);
+        txPassword.error = getString(R.string.error_empty_password);
     }
 
     override fun setLoginError() {
