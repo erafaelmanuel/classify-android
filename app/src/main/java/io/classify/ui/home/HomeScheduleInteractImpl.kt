@@ -2,6 +2,7 @@ package io.classify.ui.home
 
 import io.classify.data.model.Schedule
 
+@Deprecated("unused")
 class HomeScheduleInteractImpl : HomeSchedulesInteract {
 
     override fun findSchedules(listener: HomeSchedulesInteract.OnFinishedListener) {

@@ -2,6 +2,7 @@ package io.classify.ui.home
 
 import io.classify.data.model.Schedule
 
+@Deprecated("unused")
 interface HomeSchedulesInteract {
 
     interface OnFinishedListener {

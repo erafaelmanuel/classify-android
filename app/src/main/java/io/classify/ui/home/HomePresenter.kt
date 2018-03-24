@@ -1,12 +1,10 @@
 package io.classify.ui.home
 
+import io.classify.data.model.User
+
 interface HomePresenter {
 
-    fun onResume()
+    fun showClasses(user: User)
 
-    fun onScheduleClicked(position: Int);
-
-    fun onDestroy()
-
-    fun showSchedules()
+    fun showProfile(user: User)
 }

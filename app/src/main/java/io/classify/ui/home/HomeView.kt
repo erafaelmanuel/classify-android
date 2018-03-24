@@ -1,6 +1,6 @@
 package io.classify.ui.home
 
-import io.classify.data.model.Schedule
+import io.classify.data.model.Teacher
 
 interface HomeView {
 
@@ -8,5 +8,7 @@ interface HomeView {
 
     fun hideProgress()
 
-    fun setSchedules(schedules: List<Schedule>)
+    fun navigateProfile(teacher: Teacher)
+
+    fun navigateClasses(teacher: Teacher)
 }

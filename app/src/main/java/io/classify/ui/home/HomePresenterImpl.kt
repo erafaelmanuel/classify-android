@@ -1,29 +1,37 @@
 package io.classify.ui.home
 
-import android.util.Log
-import io.classify.data.model.Schedule
+import io.classify.data.model.Teacher
+import io.classify.data.model.User
 
-class HomePresenterImpl(val homeView: HomeView, val homeSchedulesInteract: HomeSchedulesInteract)
-    : HomePresenter, HomeSchedulesInteract.OnFinishedListener {
+class HomePresenterImpl(private val homeView: HomeView,
+                        private val homeInteract: HomeInteractImpl) :
+        HomePresenter, HomeInteract.OnFinishedListener {
 
-    override fun showSchedules() {
-        homeSchedulesInteract.findSchedules(this)
-    }
-
-    override fun onResume() {
+    override fun showClasses(user: User) {
         homeView.showProgress()
+        homeInteract.findClasses(user, this)
     }
 
-    override fun onScheduleClicked(position: Int) {
-        Log.i("HomeView", "Position ${position} clicked")
+    override fun showProfile(user: User) {
+        homeView.showProgress()
+        homeInteract.findProfile(user, this)
     }
 
-    override fun onDestroy() {
+    override fun onShowClassesSuccess(teacher: Teacher) {
         homeView.hideProgress()
+        homeView.navigateClasses(teacher)
     }
 
-    override fun onFinished(schedules: List<Schedule>) {
-        homeView.setSchedules(schedules)
+    override fun onShowClassesError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun onShowProfileSuccess(teacher: Teacher) {
+        homeView.hideProgress()
+        homeView.navigateProfile(teacher)
+    }
+
+    override fun onShowProfileError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

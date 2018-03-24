@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import io.classify.R
 import io.classify.data.model.Schedule
 import kotlinx.android.synthetic.main.row_schedule.view.*
-
+@Deprecated("unused")
 class HomeScheduleAdapter(context: Context, private var schedules: List<Schedule>)
     : RecyclerView.Adapter<HomeScheduleAdapter.HomeScheduleViewHolder>() {
 
