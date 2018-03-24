@@ -19,28 +19,45 @@
         android:textColor="@color/colorBlack"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/message"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_error"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:visibility="invisible" />
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_error"
+            android:textAlignment="center"
+            android:textColor="@color/colorError"
+            android:visibility="invisible"
+            android:layout_gravity="center" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_person_outline_black_24dp"
         android:gravity="center_vertical"
-        android:hint="@string/user_name" />
+        android:hint="@string/user_name"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_lock_outline_black_24dp"
         android:gravity="center_vertical"
         android:hint="@string/password"
         android:inputType="textPassword" />
@@ -49,12 +66,6 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Base.Button.Normal"
         android:text="@string/log_in" />
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:visibility="gone" />
 </LinearLayout>

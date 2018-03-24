@@ -16,7 +16,8 @@ import javax.inject.Inject
 
 class LoginActivity : BaseActivity(), LoginView, View.OnClickListener {
 
-    @Inject lateinit var retrofit: Retrofit
+    @Inject
+    lateinit var retrofit: Retrofit
 
     private lateinit var message: TextView
 
@@ -31,7 +32,6 @@ class LoginActivity : BaseActivity(), LoginView, View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         appComponent.inject(this)
 
         val userService = retrofit.create(UserService::class.java)
@@ -55,11 +55,11 @@ class LoginActivity : BaseActivity(), LoginView, View.OnClickListener {
 
     override fun showProgress() {
         progressBar.visibility = View.VISIBLE;
-        message.visibility = View.GONE;
+        message.visibility = View.INVISIBLE;
     }
 
     override fun hideProgress() {
-        progressBar.visibility = View.GONE;
+        progressBar.visibility = View.INVISIBLE;
     }
 
     override fun setUsernameError() {
