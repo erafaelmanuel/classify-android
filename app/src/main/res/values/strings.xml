@@ -12,4 +12,14 @@
     <string name="error_empty_username">username cannot be empty</string>
     <string name="error_empty_password">password cannot be empty</string>
     <string name="error_login">Incorrect username or password</string>
+
+    <!-- Strings related to home -->
+    <string name="action_classes">Classes</string>
+    <string name="action_profile">Profile</string>
+    <string name="action_schedules">Schedules</string>
+    <string name="action_students">Students</string>
+    <string name="description_classes">Tap to view your classes</string>
+    <string name="description_profile">Tap to view your profiles</string>
+    <string name="description_schedules">Tap to view your schedules</string>
+    <string name="description_students">Tap to view your students</string>
 </resources>
