@@ -27,7 +27,7 @@ class LoginInteractImpl(private val userService: UserService) : LoginInteract {
                             { result ->
                                 val user = result?: User()
                                 if (user.password.equals(password)) {
-                                    listener.onSuccess()
+                                    listener.onSuccess(user)
                                 } else {
                                     listener.onFailure()
                                 }

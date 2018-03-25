@@ -1,5 +1,7 @@
 package io.classify.ui.login
 
+import io.classify.data.model.User
+
 class LoginPresenterImpl(private val loginView: LoginView,
                          private val loginInteract: LoginInteract) : LoginPresenter,
         LoginInteract.OnFinishedListener {
@@ -23,8 +25,8 @@ class LoginPresenterImpl(private val loginView: LoginView,
         loginView.hideProgress()
     }
 
-    override fun onSuccess() {
-        loginView.navigateToHome()
+    override fun onSuccess(user: User) {
+        loginView.navigateToHome(user)
     }
 
     override fun onFailure() {

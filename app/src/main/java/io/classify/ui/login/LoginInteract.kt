@@ -1,5 +1,7 @@
 package io.classify.ui.login
 
+import io.classify.data.model.User
+
 interface LoginInteract {
 
     interface OnFinishedListener {
@@ -8,7 +10,7 @@ interface LoginInteract {
 
         fun onPasswordError()
 
-        fun onSuccess()
+        fun onSuccess(user: User)
 
         fun onFailure()
     }

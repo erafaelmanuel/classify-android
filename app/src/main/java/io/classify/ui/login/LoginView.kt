@@ -1,5 +1,7 @@
 package io.classify.ui.login
 
+import io.classify.data.model.User
+
 interface LoginView {
 
     fun showProgress()
@@ -12,5 +14,5 @@ interface LoginView {
 
     fun setLoginError();
 
-    fun navigateToHome()
+    fun navigateToHome(user: User)
 }

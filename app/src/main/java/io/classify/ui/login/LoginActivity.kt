@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import io.classify.R
+import io.classify.data.model.User
 import io.classify.data.remote.service.UserService
 import io.classify.ui.BaseActivity
 import io.classify.ui.home.HomeActivity
@@ -74,8 +75,10 @@ class LoginActivity : BaseActivity(), LoginView, View.OnClickListener {
         message.visibility = View.VISIBLE
     }
 
-    override fun navigateToHome() {
-        startActivity(Intent(this, HomeActivity::class.java))
+    override fun navigateToHome(user: User) {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("userId", user.id)
+        startActivity(intent)
         finish()
     }
 }
