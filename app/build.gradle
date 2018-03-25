@@ -34,6 +34,7 @@ dependencies {
     implementation rootProject.ext.cardView
 
     implementation rootProject.ext.dagger
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     kapt rootProject.ext.daggerCompiler
 
     implementation rootProject.ext.retrofit

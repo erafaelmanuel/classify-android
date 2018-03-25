@@ -8,7 +8,11 @@ interface HomeView {
 
     fun hideProgress()
 
+    fun navigateClasses(teacher: Teacher)
+
     fun navigateProfile(teacher: Teacher)
 
-    fun navigateClasses(teacher: Teacher)
+    fun setClassesError()
+
+    fun setProfileError()
 }

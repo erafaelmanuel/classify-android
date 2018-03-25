@@ -1,5 +1,6 @@
 package io.classify.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.CardView
 import android.util.Log
@@ -9,6 +10,7 @@ import io.classify.R
 import io.classify.data.model.Teacher
 import io.classify.data.remote.service.TeacherService
 import io.classify.ui.BaseActivity
+import io.classify.ui.profile.ProfileActivity
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -59,11 +61,20 @@ class HomeActivity : BaseActivity(), HomeView, View.OnClickListener {
         Log.i("", "")
     }
 
-    override fun navigateProfile(teacher: Teacher) {
+    override fun navigateClasses(teacher: Teacher) {
         Toast.makeText(this, teacher.name, Toast.LENGTH_LONG).show()
     }
 
-    override fun navigateClasses(teacher: Teacher) {
-        Toast.makeText(this, teacher.name, Toast.LENGTH_LONG).show()
+    override fun navigateProfile(teacher: Teacher) {
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun setClassesError() {
+        Toast.makeText(this, "Connection error", Toast.LENGTH_LONG).show()
+    }
+
+    override fun setProfileError() {
+        Toast.makeText(this, "Connection error", Toast.LENGTH_LONG).show()
     }
 }
