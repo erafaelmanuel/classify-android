@@ -1,10 +1,8 @@
 package io.classify.ui.home
 
-import io.classify.data.model.User
-
 interface HomePresenter {
 
-    fun showClasses(user: User)
+    fun showClasses(userId: Long)
 
-    fun showProfile(user: User)
+    fun showProfile(userId: Long)
 }

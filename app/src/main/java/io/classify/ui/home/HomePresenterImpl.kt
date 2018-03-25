@@ -7,14 +7,14 @@ class HomePresenterImpl(private val homeView: HomeView,
                         private val homeInteract: HomeInteractImpl) :
         HomePresenter, HomeInteract.OnFinishedListener {
 
-    override fun showClasses(user: User) {
+    override fun showClasses(userId: Long) {
         homeView.showProgress()
-        homeInteract.findClasses(user, this)
+        homeInteract.findClasses(userId, this)
     }
 
-    override fun showProfile(user: User) {
+    override fun showProfile(userId: Long) {
         homeView.showProgress()
-        homeInteract.findProfile(user, this)
+        homeInteract.findProfile(userId, this)
     }
 
     override fun onShowClassesSuccess(teacher: Teacher) {

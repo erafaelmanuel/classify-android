@@ -1,7 +1,6 @@
 package io.classify.ui.home
 
 import io.classify.data.model.Teacher
-import io.classify.data.model.User
 
 interface HomeInteract {
 
@@ -16,7 +15,7 @@ interface HomeInteract {
         fun onShowProfileError()
     }
 
-    fun findClasses(user: User, listener: OnFinishedListener)
+    fun findClasses(userId: Long, listener: OnFinishedListener)
 
-    fun findProfile(user: User, listener: OnFinishedListener)
+    fun findProfile(userId: Long, listener: OnFinishedListener)
 }
